@@ -1,29 +1,20 @@
-mc_rtc new plugin template
+mc_rtc Energy Residual plugin
 ==
 
-This project is a template for a new plugin wihtin [mc_rtc]
+This project is a [mc_rtc] plugin, which estimates the residual energy to obtain torques.
 
-It comes with:
-- a CMake project that can build a plugin for [mc_rtc], the project can be put within [mc_rtc] source-tree for easier updates
-- clang-format files
-- automated GitHub Actions builds on three major platforms
+This implementation is based on the methodology outlined in the paper: 
 
-Quick start
---
+Collision Detection and Contact Point Estimation Using Virtual Joint Torque Sensing Applied to a Cobot - Dario Zurlo et al.
 
-1. Renaming the controller from `NewPlugin` to `MyPlugin`. In a shell (Git Bash on Windows, replace sed with gsed on macOS):
+It has been implemented and tested on the Kinova Gen 3 collaborative robot (cobot).
 
-```bash
-sed -i -e's/NewPlugin/MyPlugin/g' `find . -type f`
-git mv src/NewPlugin.cpp src/MyPlugin.cpp
-git mv src/NewPlugin.h src/MyPlugin.h
-git mv etc/NewPlugin.in.yaml etc/MyPlugin.in.yaml
-```
+# References
 
-2. You can customize the project name in vcpkg.json as well, note that this must follow [vcpkg manifest rules](https://github.com/microsoft/vcpkg/blob/master/docs/users/manifests.md)
+D. Zurlo, T. Heitmann, M. Morlock and A. De Luca, "Collision Detection and Contact Point Estimation Using Virtual Joint Torque Sensing Applied to a Cobot," 2023 IEEE International Conference on Robotics and Automation (ICRA), London, United Kingdom, 2023, pp. 7533-7539, doi: 10.1109/ICRA48891.2023.10160661.
 
-3. Build and install the project
+# Author
 
-4. Run using your [mc_rtc] interface of choice, add `MyPlugin` to the `Plugins` configuration entry or enable the autoload option
+This implementation was developed by Bastien Muraccioli and is not affiliated with the original authors of the referenced paper.
 
 [mc_rtc]: https://jrl-umi3218.github.io/mc_rtc/

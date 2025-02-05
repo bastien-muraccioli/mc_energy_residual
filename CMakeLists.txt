@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 
 project(
-  NewPlugin
+  EnergyResidual
   LANGUAGES CXX
   VERSION 1.0.0)
 
@@ -14,17 +14,17 @@ if(NOT TARGET mc_rtc::mc_control)
 endif()
 
 # Configure and install the plugin configuration
-configure_file(etc/NewPlugin.in.yaml
-               "${CMAKE_CURRENT_BINARY_DIR}/etc/NewPlugin.yaml")
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/etc/NewPlugin.yaml"
+configure_file(etc/EnergyResidual.in.yaml
+               "${CMAKE_CURRENT_BINARY_DIR}/etc/EnergyResidual.yaml")
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/etc/EnergyResidual.yaml"
         DESTINATION "${MC_PLUGINS_RUNTIME_INSTALL_PREFIX}/etc")
 
-set(plugin_SRC src/NewPlugin.cpp)
+set(plugin_SRC src/EnergyResidual.cpp)
 
-set(plugin_HDR src/NewPlugin.h)
+set(plugin_HDR src/EnergyResidual.h)
 
 # The add_plugin macro is provided by mc_rtc
-add_plugin(NewPlugin "${plugin_SRC}" "${plugin_HDR}")
+add_plugin(EnergyResidual "${plugin_SRC}" "${plugin_HDR}")
 
 if(BUILD_TESTING)
   add_subdirectory(tests)
