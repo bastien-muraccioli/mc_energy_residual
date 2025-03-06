@@ -19,9 +19,15 @@ configure_file(etc/EnergyResidual.in.yaml
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/etc/EnergyResidual.yaml"
         DESTINATION "${MC_PLUGINS_RUNTIME_INSTALL_PREFIX}/etc")
 
-set(plugin_SRC src/EnergyResidual.cpp)
+set(plugin_SRC 
+  src/EnergyResidual.cpp
+  src/LpfThreshold.cpp
+  )
 
-set(plugin_HDR src/EnergyResidual.h)
+set(plugin_HDR 
+  src/EnergyResidual.h
+  src/LpfThreshold.h
+  )
 
 # The add_plugin macro is provided by mc_rtc
 add_plugin(EnergyResidual "${plugin_SRC}" "${plugin_HDR}")
