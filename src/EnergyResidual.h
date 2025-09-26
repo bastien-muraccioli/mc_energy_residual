@@ -63,6 +63,7 @@ private:
   bool collision_stop_activated_ = false;
   bool collision_stop_activated_zurlo_ = false;
   bool obstacle_detected_ = false;
+  bool activate_verbose = false;
 };
 
 } // namespace mc_plugin

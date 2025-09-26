@@ -120,15 +120,16 @@ void EnergyResidual::before(mc_control::MCGlobalController & controller)
   if(residual > residual_high_ || residual < residual_low_)
   {
     obstacle_detected_ = true;
+    if(activate_verbose) mc_rtc::log::info("[Energy Residual] Obstacle detected");
     if(collision_stop_activated_)
     {
       ctl.controller().datastore().get<bool>("Obstacle detected") = obstacle_detected_;
     }
   }
-  if(collision_stop_activated_zurlo_)
-  {
+  // if(collision_stop_activated_zurlo_)
+  // {
     ctl.controller().datastore().get<bool>("Energy Residual Obstacle detected") = obstacle_detected_;
-  }
+  // }
 }
 
 void EnergyResidual::after(mc_control::MCGlobalController & controller)
@@ -206,7 +207,8 @@ void EnergyResidual::addGui(mc_control::MCGlobalController & controller)
       }),
       mc_rtc::gui::Button("Add plot", [this]() { return activate_plot_ = true; }),
     // Add checkbox to activate the collision stop
-    mc_rtc::gui::Checkbox("Collision stop", collision_stop_activated_), 
+    mc_rtc::gui::Checkbox("Collision stop", collision_stop_activated_),
+    mc_rtc::gui::Checkbox("Verbose", activate_verbose), 
     // Add Threshold offset input
     mc_rtc::gui::NumberInput("Threshold offset", [this](){return this->threshold_offset_;},
         [this](double offset)
